@@ -35,11 +35,11 @@ def register():
         db.commit()
         
         # Retorne uma resposta de sucesso
-        return jsonify({"message": "User successfully registered."}), 201
+        return jsonify({"message": "Usuário Registrado com sucesso."}), 201
     except IntegrityError:
         # Se o e-mail já existir, retorne um erro
         db.rollback()
-        return jsonify({"message": "Email already registered."}), 400
+        return jsonify({"message": "Email já registrado."}), 400
     finally:
         db.close()
     pass
@@ -53,7 +53,7 @@ def login():
 
     # Validação simples dos dados
     if not data or not data.get('email') or not data.get('password'):
-        return jsonify({"message": "Email and password are required."}), 400
+        return jsonify({"message": "Email e senha são obrigatórios."}), 400
 
     # Crie uma sessão com o banco de dados
     db = SessionLocal()
