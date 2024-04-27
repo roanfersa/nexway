@@ -2,6 +2,7 @@
 
 from sqlalchemy import Column, Integer, String, Float, ForeignKey, Boolean
 from database import Base
+from sqlalchemy.orm import relationship
 
 class Profile(Base):
     __tablename__ = 'profiles'
@@ -16,7 +17,9 @@ class Profile(Base):
     professional_experience = Column(String)  # Exemplo para 'less than 2 years', etc.
     networking_objective = Column(String)  # Exemplo para 'Financing', 'Investment', etc.
     # Adicionar campos adicionais conforme necessário
+    
 
     # Aqui você pode adicionar relacionamentos se necessário, por exemplo:
+    availability = relationship("Availability", back_populates="profile")
     # location = relationship("Location", back_populates="profile")
     # user = relationship("User", back_populates="profile")
